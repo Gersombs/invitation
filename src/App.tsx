@@ -307,6 +307,30 @@ function App() {
     };
   }, [open, m, lightbox]);
 
+  useEffect(() => {
+    const pauseIfHidden = () => {
+      if (document.hidden && audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setPlaying(false);
+      }
+    };
+
+    const pauseOnLeave = () => {
+      if (audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setPlaying(false);
+      }
+    };
+
+    document.addEventListener("visibilitychange", pauseIfHidden);
+    window.addEventListener("pagehide", pauseOnLeave);
+
+    return () => {
+      document.removeEventListener("visibilitychange", pauseIfHidden);
+      window.removeEventListener("pagehide", pauseOnLeave);
+    };
+  }, []);
+
   const toggleMusic = () => {
     if (!w.musicSrc) {
       setToast("Añade tu canción en src/config.ts ♫");

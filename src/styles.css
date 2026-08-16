@@ -555,10 +555,14 @@ p {
   position: relative;
   z-index: 2;
   width: min(84vw, 390px);
-  height: min(70svh, 550px);
-  min-height: 480px;
-  padding: clamp(45px, 8vh, 70px) 28px;
+  height: min(76svh, 610px);
+  min-height: 520px;
+  padding: clamp(40px, 7vh, 70px) 28px 36px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: #fffaf1ed;
   border: 1px solid #cbb99f;
   box-shadow: 0 30px 80px #493a2930;
@@ -588,9 +592,9 @@ p {
 
 .seal {
   display: block;
-  margin: 24px auto 15px;
-  width: 70px;
-  height: 70px;
+  margin: 28px auto 12px;
+  width: 72px;
+  height: 72px;
   border: 0;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 25%, #66816d, #294636 58%, #173025);
@@ -598,6 +602,7 @@ p {
   font: 500 19px var(--serif);
   box-shadow: 0 10px 25px #1e2f2555;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .music {
